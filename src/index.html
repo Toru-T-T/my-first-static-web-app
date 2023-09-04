@@ -96,7 +96,7 @@
         //const { text } = await( await fetch(`/api/message`)).json();
 		//const { text } = await( await fetch(`/api/test_conversation_001?code=qGRHMNSDbLCJAVznckZaXBljxU5bEAfaIYQcP0O4YVy4AzFuQYQttQ==`)).json();
 		//const { text } = await( await fetch(`https://func-aiwg-openai-test-eastus-001.azurewebsites.net/api/test_conversation_001?code=qGRHMNSDbLCJAVznckZaXBljxU5bEAfaIYQcP0O4YVy4AzFuQYQttQ==`)).json();
-		const { text } = await( await fetch(`https://ambitious-hill-04868590f.3.azurestaticapps.net/api/test_conversation_002`)).json();
+		const { text } = await( await fetch(`/api/test_conversation_002`)).json();
         document.querySelector('#name').textContent = text;
     }());
     </script>
