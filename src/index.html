@@ -79,6 +79,7 @@
 		<label><input type="radio" name="usecase" value="4">オプション4</label>  
 		<label><input type="radio" name="usecase" value="5">オプション5</label>  
 	</form>
+	<button onclick="sendHttpRequest()">Submit</button>
 
 	<h2>対象</h2>  
 	<textarea name="target"></textarea> 
@@ -94,7 +95,7 @@
     </main>
 
     <script>
-    (async function() {
+    (async function sendHttpRequest() {
 		const formData = new FormData(document.getElementById("radioForm"));
 		const selectedValue = formData.get("usecase");
 
