@@ -97,13 +97,13 @@
 
     <script>
 	(async function() {
-		//document.querySelector('#functiontest').textContent = "testing...";
-		//const { text } = await( await fetch(`/api/test_function_010`)).json();
-		const { text } = await( await fetch(`/api/message`)).json();
+		document.querySelector('#functiontest').textContent = "testing...";
+		const { text } = await( await fetch(`/api/test_function_010`)).json();
+		//const { text } = await( await fetch(`/api/message`)).json();
 		document.querySelector('#functiontest').textContent = text;
     }());
 
-    function sendHttpRequest() {
+    async function sendHttpRequest() {
 		document.querySelector('#selectedusecase').textContent = "testing...";
 		const formData = new FormData(document.getElementById("radioForm"));
 		const selectedValue = formData.get("usecase");
@@ -112,7 +112,7 @@
 			selectedOption: selectedValue
 		};
 
-		const response = fetch(`/api/test_function_011`, {
+		const response = await fetch(`/api/test_function_011`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -120,7 +120,7 @@
 			body: JSON.stringify(bodyData),
 		});
 
-		const { text } = response.json();
+		const { text } = await (response).json();
 		document.querySelector('#selectedusecase').textContent = text;
     };
     </script>
