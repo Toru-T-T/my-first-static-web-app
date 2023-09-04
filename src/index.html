@@ -79,13 +79,13 @@
 	<label><input type="radio" name="use" value="option5">オプション5</label>  
 
 	<h2>対象</h2>  
-	<input type="text" name="target">  
+	<textarea name="target"></textarea> 
   
 	<h2>補足情報</h2>  
 	<textarea name="additional"></textarea>  
   
 	<h2>回答</h2>  
-	<input type="text" name="answer">  
+	<textarea name="answer"></textarea> 
 
     <input type="submit" value="送信">  
 
@@ -93,7 +93,8 @@
 
     <script>
     (async function() {
-        const { text } = await( await fetch(`/api/message`)).json();
+        //const { text } = await( await fetch(`/api/message`)).json();
+		const { text } = await( await fetch(`https://func-aiwg-openai-test-eastus-001.azurewebsites.net/api/test_conversation_001?code=qGRHMNSDbLCJAVznckZaXBljxU5bEAfaIYQcP0O4YVy4AzFuQYQttQ==`)).json();
         document.querySelector('#name').textContent = text;
     }());
     </script>
