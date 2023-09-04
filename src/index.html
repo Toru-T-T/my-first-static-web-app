@@ -69,14 +69,16 @@
     <main>
 
 	<h1>OpenAIテストページ</h1>  
-    <p>Loading content from the API: <b id="name">...</b></p>
+    <p>Loading content from the API: <b id="name">testing...</b></p>
   
 	<h2>用途</h2>  
-	<label><input type="radio" name="use" value="option1">オプション1</label>  
-	<label><input type="radio" name="use" value="option2">オプション2</label>  
-	<label><input type="radio" name="use" value="option3">オプション3</label>  
-	<label><input type="radio" name="use" value="option4">オプション4</label>  
-	<label><input type="radio" name="use" value="option5">オプション5</label>  
+	<form id="radioForm">
+		<label><input type="radio" name="usecase" value="1">通常チャット</label>  
+		<label><input type="radio" name="usecase" value="2">オプション2</label>  
+		<label><input type="radio" name="usecase" value="3">オプション3</label>  
+		<label><input type="radio" name="usecase" value="4">オプション4</label>  
+		<label><input type="radio" name="usecase" value="5">オプション5</label>  
+	</form>
 
 	<h2>対象</h2>  
 	<textarea name="target"></textarea> 
@@ -93,11 +95,24 @@
 
     <script>
     (async function() {
-        //const { text } = await( await fetch(`/api/message`)).json();
-		//const { text } = await( await fetch(`/api/test_conversation_001?code=qGRHMNSDbLCJAVznckZaXBljxU5bEAfaIYQcP0O4YVy4AzFuQYQttQ==`)).json();
-		//const { text } = await( await fetch(`https://func-aiwg-openai-test-eastus-001.azurewebsites.net/api/test_conversation_001?code=qGRHMNSDbLCJAVznckZaXBljxU5bEAfaIYQcP0O4YVy4AzFuQYQttQ==`)).json();
-		const { text } = await( await fetch(`/api/test_conversation_002`)).json();
-        document.querySelector('#name').textContent = text;
+		const formData = new FormData(document.getElementById("radioForm"));
+		const selectedValue = formData.get("usecase");
+
+		const bodyData = {
+			selectedOption: selectedValue
+		};
+
+		//const response = await fetch(`/api/test_conversation_001?code=qGRHMNSDbLCJAVznckZaXBljxU5bEAfaIYQcP0O4YVy4AzFuQYQttQ==`, {
+		const response = await fetch(`/api/test_conversation_002`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(bodyData),
+		});
+
+		const { text } = await response.json();
+		document.querySelector('#name').textContent = text;
     }());
     </script>
 </body>
