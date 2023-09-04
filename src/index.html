@@ -98,7 +98,7 @@
     <script>
 	(async function() {
 		document.querySelector('#functiontest').textContent = "testing...";
-		const { text } = await fetch(`/api/test_conversation_001`).json();
+		const { text } = await fetch(`/api/test_function_010`).json();
 		document.querySelector('#functiontest').textContent = text;
     }());
 
@@ -111,7 +111,7 @@
 			selectedOption: selectedValue
 		};
 
-		const response = fetch(`/api/test_conversation_002`, {
+		const response = fetch(`/api/test_function_011`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
