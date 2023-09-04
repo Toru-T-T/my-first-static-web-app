@@ -98,7 +98,7 @@
     <script>
 	(async function() {
 		document.querySelector('#functiontest').textContent = "testing...";
-		const { text } = await fetch(`/api/test_conversation_001?code=qGRHMNSDbLCJAVznckZaXBljxU5bEAfaIYQcP0O4YVy4AzFuQYQttQ==`).json();
+		const { text } = await fetch(`/api/test_conversation_001`).json();
 		document.querySelector('#functiontest').textContent = text;
     }());
 
