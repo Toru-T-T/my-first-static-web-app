@@ -69,9 +69,11 @@
     <main>
 
 	<h1>OpenAIテストページ</h1>  
-    <p>Loading content from the API: <b id="functiontest">...</b></p>
-  
-	<h2>用途</h2>  
+    <!--
+		<p>Loading content from the API: <b id="functiontest">...</b></p>
+	-->
+
+	<h2>用途 -ダミー</h2>  
 	<form id="radioForm">
 		<label><input type="radio" name="usecase" value="1">通常チャット</label>  
 		<label><input type="radio" name="usecase" value="2">オプション2</label>  
@@ -79,22 +81,20 @@
 		<label><input type="radio" name="usecase" value="4">オプション4</label>  
 		<label><input type="radio" name="usecase" value="5">オプション5</label>  
 	</form>
-	<button onclick="sendHttpRequest()">Submit</button>
-	<p>Loading content from the API: <b id="selectedusecase">...</b></p>
 
 	<h2>対象</h2>  
-	<textarea name="target"></textarea> 
+	<input type="text" id="target", name="target"> 
+	<button onclick="sendHttpRequest()">Submit</button>
   
-	<h2>補足情報</h2>  
+	<h2>補足情報 -ダミー</h2>  
 	<textarea name="additional"></textarea>  
   
 	<h2>回答</h2>  
-	<textarea name="answer"></textarea> 
-
-    <input type="submit" value="送信">  
+	<textarea id="answer", name="answer"></textarea> 
 
     </main>
 
+	<!--
     <script>
 	(async function() {
 		document.querySelector('#functiontest').textContent = "testing...";
@@ -102,17 +102,18 @@
 		//const { text } = await( await fetch(`/api/message`)).json();
 		document.querySelector('#functiontest').textContent = text;
     }());
-
-    async function sendHttpRequest() {
-		document.querySelector('#selectedusecase').textContent = "testing...";
-		const formData = new FormData(document.getElementById("radioForm"));
-		const selectedValue = formData.get("usecase");
+	-->
+    <script>
+		async function sendHttpRequest() {
+		document.querySelector('#answer').textContent = "testing...";
+		const formData = new FormData(document.getElementById("answer"));
+		const target = formData.get("answer");
 
 		const bodyData = {
-			selectedOption: selectedValue
+			input_val: target
 		};
 
-		const response = await fetch(`/api/test_function_011`, {
+		const response = await fetch(`/api/test_function_100`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -121,7 +122,7 @@
 		});
 
 		const { text } = await (response).json();
-		document.querySelector('#selectedusecase').textContent = text;
+		document.querySelector('#answer').textContent = text;
     };
     </script>
 </body>
