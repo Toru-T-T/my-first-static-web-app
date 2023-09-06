@@ -112,6 +112,7 @@
 		document.querySelector('#answer').textContent = "testing...";
 		const formData = new FormData(document.getElementById("target"));
 		const target = formData.get("target");
+		document.querySelector('#answer').textContent = target;
 
 		const bodyData = {
 			input_val: target
