@@ -111,10 +111,10 @@
 	-->
     <script>
 		async function sendHttpRequest() {
-		document.querySelector('#answer').textContent = "testing...";
+		document.querySelector('#answer').textContent = "log01...";
 		const formData = new FormData(document.getElementById("target"));
 		const target = formData.get("target");
-		document.querySelector('#answer').textContent = target;
+		document.querySelector('#answer').textContent = "log02...";
 
 		const bodyData = {
 			input_val: target
