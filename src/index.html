@@ -110,8 +110,8 @@
     <script>
 		async function sendHttpRequest() {
 		document.querySelector('#answer').textContent = "testing...";
-		const formData = new FormData(document.getElementById("answer"));
-		const target = formData.get("answer");
+		const formData = new FormData(document.getElementById("target"));
+		const target = formData.get("target");
 
 		const bodyData = {
 			input_val: target
